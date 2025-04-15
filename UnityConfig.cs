@@ -2,6 +2,9 @@ public static class UnityConfig
 {
 	public static void RegisterTypes(IUnityContainer container)
 	{
+		// Application DbContext
+		container.RegisterType<AppDbContext>(new PerRequestLifetimeManager());
+		
 		container.RegisterType<ILoggingService, SystemLoggerService>();
 		container.RegisterFactory<ILogger>("LoggerSystem", c =>
 		{
